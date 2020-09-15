@@ -34,8 +34,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var mul: Button
     lateinit var cancel: Button
     lateinit var curRes: TextView
-    //var curNum: Double = 0.0
-    //var showRes: Boolean = true
     var curNumStr: String = ""
     var leftOperand: String = ""
     var curOp: Char = '$'
@@ -103,7 +101,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             eq -> {
-                solveCur() //TODO = = is 0
+                solveCur()
             }
             cancel -> {
                 curNumStr = ""
