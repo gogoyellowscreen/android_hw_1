@@ -102,6 +102,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             eq -> {
                 solveCur()
+                curOp = '='
             }
             cancel -> {
                 curNumStr = ""
