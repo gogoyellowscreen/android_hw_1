@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         const val CUR_NUM_KEY = "CUR_NUM_KEY"
         const val LEFT_OPERAND_KEY = "LEFT_OPERAND_KEY"
         const val CUR_OP_KEY = "CUR_OP_KEY"
+        const val LAST_VIEW_KEY = "LAST_VIEW_KEY"
     }
 
     lateinit var zero: Button
@@ -37,7 +38,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     var curNumStr: String = ""
     var leftOperand: String = ""
     var curOp: Char = '$'
-    lateinit var lastView: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +61,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         minus = findViewById(R.id.minus)
         mul = findViewById(R.id.multiply)
         curRes = findViewById(R.id.cur_res)
-        lastView = zero
 
         zero.setOnClickListener(this)
         one.setOnClickListener(this)
@@ -122,7 +121,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 curOp = '*'
             }
         }
-        lastView = v
         updateLabel()
     }
 
@@ -144,11 +142,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun solveCur() {
-        if (lastView == plus || lastView == minus || lastView == eq || lastView == mul) {
+        if (curNumStr.isEmpty()) {
             return
         }
         val lOp: Double = if (leftOperand.isEmpty()) 0.0 else leftOperand.toDouble()
-        val rOp: Double = if (curNumStr.isEmpty()) 0.0 else curNumStr.toDouble()
+        val rOp: Double = curNumStr.toDouble()
         when (curOp) {
             '+' -> curNumStr = (lOp + rOp).toString()
             '-' -> curNumStr = (lOp - rOp).toString()
