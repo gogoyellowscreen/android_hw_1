@@ -1,12 +1,10 @@
 package com.example.myapplication
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_main.view.*
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -15,26 +13,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         const val CUR_NUM_KEY = "CUR_NUM_KEY"
         const val LEFT_OPERAND_KEY = "LEFT_OPERAND_KEY"
         const val CUR_OP_KEY = "CUR_OP_KEY"
-        const val LAST_VIEW_KEY = "LAST_VIEW_KEY"
     }
 
-    lateinit var zero: Button
-    lateinit var one: Button
-    lateinit var two: Button
-    lateinit var three: Button
-    lateinit var four: Button
-    lateinit var five: Button
-    lateinit var six: Button
-    lateinit var seven: Button
-    lateinit var eight: Button
-    lateinit var nine: Button
-    lateinit var dot: Button
-    lateinit var eq: Button
-    lateinit var plus: Button
-    lateinit var minus: Button
-    lateinit var mul: Button
-    lateinit var cancel: Button
-    lateinit var curRes: TextView
     var curNumStr: String = ""
     var leftOperand: String = ""
     var curOp: Char = '$'
@@ -43,24 +23,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.i(TAG, "onCreate")
-
-        zero = findViewById(R.id.zero)
-        one = findViewById(R.id.one)
-        two = findViewById(R.id.two)
-        three = findViewById(R.id.three)
-        four = findViewById(R.id.four)
-        five = findViewById(R.id.five)
-        six = findViewById(R.id.six)
-        seven = findViewById(R.id.seven)
-        eight = findViewById(R.id.eight)
-        nine = findViewById(R.id.nine)
-        dot = findViewById(R.id.dot)
-        eq = findViewById(R.id.eq)
-        cancel = findViewById(R.id.cancel)
-        plus = findViewById(R.id.plus)
-        minus = findViewById(R.id.minus)
-        mul = findViewById(R.id.multiply)
-        curRes = findViewById(R.id.cur_res)
 
         zero.setOnClickListener(this)
         one.setOnClickListener(this)
@@ -159,9 +121,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun updateLabel() {
         when {
-            curNumStr.isEmpty() && leftOperand.isEmpty() -> curRes.text = "0"
-            curNumStr.isEmpty() -> curRes.text = leftOperand
-            else -> curRes.text = curNumStr
+            curNumStr.isEmpty() && leftOperand.isEmpty() -> cur_res.text = "0"
+            curNumStr.isEmpty() -> cur_res.text = leftOperand
+            else -> cur_res.text = curNumStr
         }
     }
 }
